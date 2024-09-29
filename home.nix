@@ -20,7 +20,6 @@
 
   home.packages = [
      pkgs.hello
-      #(import ./rofi)
 
   ];
 

@@ -62,8 +62,7 @@
     enable = true;
     xkb.layout = "in";
     xkb.variant = "eng";
-    videoDrivers = ["nvidia"];  # Use NVIDIA drivers
-    
+    videoDrivers = ["nvidia"];  # Use NVIDIA drivers  
   };
 
   # Enable libinput for touchpad/mouse support
@@ -127,7 +126,6 @@
     wlroots
     xdg-desktop-portal-hyprland
     pcmanfm
-    vscodium
     vscode
     polkit
     lxqt.lxqt-policykit

@@ -5,7 +5,9 @@
   home.homeDirectory = "/home/asura";
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
-  imports = [ ./rofi/default.nix ];
+      imports = [ 
+      ./rofi/default.nix 
+  ];
 
   programs.git = {
     enable = true;
@@ -16,7 +18,6 @@
       safe.directory = "~/.dotfiles";
     };
   };
-
 
   home.packages = [
      pkgs.hello

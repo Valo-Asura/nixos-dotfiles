@@ -8,12 +8,13 @@
 
   # Bootloader settings
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
   boot.loader.grub.enable = true;
   boot.loader.grub.devices = [ "nodev" ];
   boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
+  #to load ntfs file system
+  boot.supportedFilesystems = [ "ntfs" ];
 
   boot.loader.grub.theme = pkgs.stdenv.mkDerivation {
     pname = "distro-grub-themes";
@@ -26,10 +27,6 @@
     };
     installPhase = "cp -r customize/nixos $out";
   };
-
- 
-  #to load ntfs file system
-  boot.supportedFilesystems = [ "ntfs" ];
 
   #nix-flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -144,6 +141,9 @@
     xfce.thunar
     xfce.thunar-volman
     swww
+    gthumb
+    networkmanager
+    libnotify
     # Waybar with experimental features
     (pkgs.waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -152,6 +152,16 @@
 
 # for flash drive
   services.udisks2.enable = true;
+
+#for image 
+environment.etc = {
+  "xdg/mimeapps.list".text = ''
+    image/png=gthumb.desktop
+    image/jpeg=gthumb.desktop
+    image/jpg=gthumb.desktop
+    image/gif=gthumb.desktop
+  '';
+};
 
   #for git 
   programs.ssh = {

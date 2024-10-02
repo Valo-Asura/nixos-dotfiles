@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 
   {
- # programs.rofi = {
-   # enable = true;
+  programs.rofi = {
+    #enable = true;
     #terminal = "${pkgs.cool-retro-term}/bin/cool-retro-term";
-   # theme = ./theme.rasi;
-  #};
+    theme = ./theme.rasi;
+  };
 
   # You can also use `environment.etc` to place files directly if needed.
   home.file."./home/asura/.dotfiles/rofi/theme.rasi".text = ''

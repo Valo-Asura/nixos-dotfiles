@@ -85,7 +85,7 @@
   users.users.asura = {
     isNormalUser = true;
     description = "asura";
-    extraGroups = [ "networkmanager" "wheel" "storage" "audio" ]; # Added 'audio' group for sound
+    extraGroups = [ "networkmanager" "wheel" "storage" "audio" "plugdev" ]; # Added 'plugdev' and 'stoarge' group for usb drive
     packages = with pkgs; [
       # Additional user packages can be added here
     ];
@@ -108,8 +108,7 @@
   # System-wide packages and tools
   environment.systemPackages = with pkgs; [
     # Essential tools
-    lxqt.lxqt-openssh-askpass #for git 
-    gnome.seahorse
+    lxqt.lxqt-openssh-askpass 
     lf
     bc
     waybar
@@ -151,12 +150,14 @@
     }))
   ];
 
+# for flash drive
+  services.udisks2.enable = true;
+
   #for git 
   programs.ssh = {
     enableAskPassword = true;
     askPassword = "${pkgs.lxqt.lxqt-openssh-askpass}/bin/lxqt-openssh-askpass";
   };
-  programs.seahorse.enable = true;
 
   # Hyprland-specific configurations
   programs.hyprland = {
